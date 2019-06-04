@@ -18,9 +18,7 @@ LV_IMG_DECLARE(img_volume);
 LV_IMG_DECLARE(img_nvolume);
 
 lv_obj_t *gContainer = NULL;
-lv_obj_t *pressure = NULL;
-lv_obj_t *temperature = NULL;
-lv_obj_t *humidity = NULL;
+
 
 void ex_disp_flush(int32_t x1, int32_t y1, int32_t x2, int32_t y2, const lv_color_t *color_array)
 {
@@ -140,7 +138,8 @@ void setup()
 
     lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_PR, lv_btm_action);
     lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_CLICK, lv_btm_action1);
-
+    // lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_LONG_PR, lv_btm_action);
+    // lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_LONG_PR_REPEAT, lv_btm_action1);
 }
 
 
