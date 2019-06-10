@@ -91,6 +91,9 @@ void setup()
     });
 
 
+    ledcSetup(0, 1000, 16);
+    ledcAttachPin(25, 0);
+
     Wire1.begin(SEN_SDA, SEN_SCL);
     axp.begin(Wire1);
     axp.setPowerOutPut(AXP202_LDO2, AXP202_ON);
@@ -115,6 +118,12 @@ void setup()
     lv_obj_align(text, btn, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
 }
 
+void playSound()
+{
+    ledcWriteTone(0, 1000);
+    delay(200);
+    ledcWriteTone(0, 0);
+}
 
 void loop()
 {
@@ -130,6 +139,8 @@ void loop()
             lv_label_set_text(text, buff);
             lv_obj_align(text, btn, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
             Serial.print(i); Serial.println(" touched");
+
+            playSound();
         }
         // if it *was* touched and now *isnt*, alert!
         if (!(currtouched & _BV(i)) && (lasttouched & _BV(i)) ) {
