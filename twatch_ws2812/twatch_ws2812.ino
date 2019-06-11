@@ -10,7 +10,7 @@
 #include <WS2812FX.h>
 
 
-#define LED_PIN     25                       // 0 = GPIO0, 2=GPIO2
+#define LED_PIN     25                      
 #define LED_COUNT   4
 
 #define DEFAULT_COLOR 0xFF5900

@@ -38,7 +38,6 @@ void lv_dirver_init()
     tp = new FT5206_Class();
     if (! tp->begin(Wire1)) {
         Serial.println("Couldn't start FT5206 touchscreen controller");
-        // while (1);
     } else {
         Serial.println("Capacitive touchscreen started");
     }
@@ -138,8 +137,6 @@ void setup()
 
     lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_PR, lv_btm_action);
     lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_CLICK, lv_btm_action1);
-    // lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_LONG_PR, lv_btm_action);
-    // lv_imgbtn_set_action(imgbtn1, LV_BTN_ACTION_LONG_PR_REPEAT, lv_btm_action1);
 }
 
 

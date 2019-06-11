@@ -55,7 +55,6 @@ void lv_dirver_init()
     tp = new FT5206_Class();
     if (! tp->begin(Wire1)) {
         Serial.println("Couldn't start FT5206 touchscreen controller");
-        // while (1);
     } else {
         Serial.println("Capacitive touchscreen started");
     }
@@ -90,9 +89,6 @@ void lv_dirver_init()
     lvTicker1.attach_ms(20, [] {
         lv_tick_inc(20);
     });
-    // lvTicker2.attach_ms(5, [] {
-    //     lv_task_handler();
-    // });
 }
 
 
@@ -120,16 +116,9 @@ void setup()
         ret = particleSensor.begin();
         if (!ret && !err) {
             tft->setTextFont(2);
-            // tft->setTextSize(1);
             tft->setTextDatum(MC_DATUM);
             tft->setTextColor(TFT_BLACK,TFT_WHITE);
             tft->drawString("Could not find sensor", tft->width() / 2, tft->height() / 2);
-            // lv_obj_t *img = lv_img_create(gContainer, NULL);
-            // lv_img_set_src(img, &img_err);
-            // lv_obj_align(img, NULL, LV_ALIGN_CENTER, 0, 0);
-            // err = lv_label_create(gContainer, NULL);
-            // lv_label_set_text(err, "Could not find sensor");
-            // lv_obj_align(err, img, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
             Serial.println("Could not find a valid heartrate sensor, check wiring!");
         }
         delay(1000);

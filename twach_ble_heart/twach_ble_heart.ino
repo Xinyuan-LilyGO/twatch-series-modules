@@ -110,31 +110,9 @@ static void notifyCallback(
     size_t length,
     bool isNotify)
 {
-    // Serial.print("Notify callback for characteristic ");
-    // Serial.print(pBLERemoteCharacteristic->getUUID().toString().c_str());
-    // Serial.print(" of data length ");
-    // Serial.println(length);
-    // Serial.println("data: ");
-    // // Serial.println((char *)pData);
-
-    // if (pBLERemoteCharacteristic == pRemoteCharacteristic) {
-    //     // battery = pData[0];
-    //     Serial.printf("battery --- >\n");
-
-    // } else {
     bpm = pData[1];
-    // }
-
-    for (int i = 0; i < length; i++ ) {
-        Serial.print(pData[i]); Serial.print(" ");
-    }
-    // if (length == 12) {
-    //     Serial.printf("Humidity:%.2f Temperature:%.2f soil:%d%%\n",
-    //                   *(float *) & (pData[0]),
-    //                   * (float *) & (pData[4]),
-    //                   * (int *) & (pData[8])
-    //                  );
-
+    // for (int i = 0; i < length; i++ ) {
+    //     Serial.print(pData[i]); Serial.print(" ");
     // }
     Serial.println();
 }
@@ -184,43 +162,6 @@ bool connectToServer()
             pRemoteSensorDescriptor->writeValue(1);
         }
     }
-
-    // // // Obtain a reference to the service we are after in the remote BLE server.
-    // BLERemoteService *pRemoteService = pClient->getService(BATTERY_SERVICE_UUID);
-    // if (pRemoteService == nullptr) {
-    //     Serial.print("Failed to find our service UUID: ");
-    //     Serial.println(BATTERY_SERVICE_UUID);
-    //     pClient->disconnect();
-    //     return false;
-    // }
-    // Serial.println(" - Found our service");
-
-    // // Obtain a reference to the characteristic in the service of the remote BLE server.
-    // pRemoteCharacteristic = pRemoteService->getCharacteristic(BATTERY_CHARACTERISTIC_UUID);
-    // if (pRemoteCharacteristic == nullptr) {
-    //     Serial.print("Failed to find our characteristic UUID: ");
-    //     Serial.println(BATTERY_CHARACTERISTIC_UUID);
-    //     pClient->disconnect();
-    //     return false;
-    // } else {
-    //     Serial.println(" - Found our characteristic");
-    //     // Read the value of the characteristic.
-    //     if (pRemoteCharacteristic->canRead()) {
-    //         Serial.println("canRead");
-    //         // uint8_t *pData = pRemoteCharacteristic->readRawData();
-    //         // if (pData) {
-    //             // Serial.printf("pRemoteCharacteristic Read : %x\n", pData[0]);
-    //             // battery =  pData[0];
-    //         // }
-    //         std::string value = pRemoteCharacteristic->readValue();
-    //         Serial.print("The characteristic value was: ");
-    //         Serial.println(value.c_str());
-    //     }
-    //     if (pRemoteCharacteristic->canNotify()) {
-    //         Serial.println("canNotify");
-    //         // pRemoteCharacteristic->registerForNotify(notifyCallback);
-    //     }
-    // }
     connected = true;
 }
 
