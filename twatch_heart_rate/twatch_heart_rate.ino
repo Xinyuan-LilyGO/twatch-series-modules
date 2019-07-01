@@ -30,6 +30,7 @@ byte rateSpot = 0;
 long lastBeat = 0; //Time at which the last beat occurred
 float beatsPerMinute;
 int beatAvg;
+int prevBeatAvg;
 int y;
 
 static void heartrate_task(void *param);
@@ -117,7 +118,7 @@ void setup()
         if (!ret && !err) {
             tft->setTextFont(2);
             tft->setTextDatum(MC_DATUM);
-            tft->setTextColor(TFT_BLACK,TFT_WHITE);
+            tft->setTextColor(TFT_BLACK, TFT_WHITE);
             tft->drawString("Could not find sensor", tft->width() / 2, tft->height() / 2);
             Serial.println("Could not find a valid heartrate sensor, check wiring!");
         }
@@ -187,14 +188,18 @@ void loop()
             anim_start = true;
             heart_anim_start();
         }
-        Serial.printf("IR:%u - bpm:%.2f avg:%d\n", irValue, beatsPerMinute, beatAvg);
-        snprintf(buffer, sizeof(buffer), "BPM:%.2f", beatAvg);
-        lv_label_set_text(bpm, buffer);
-        lv_obj_align(bpm, NULL, LV_ALIGN_CENTER, 0, y);
 
-        snprintf(buffer, sizeof(buffer), "AVG BPM:%d", beatAvg);
-        lv_label_set_text(avg, buffer);
-        lv_obj_align(avg, bpm, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
+        // if (prevBeatAvg != beatAvg) {
+            // prevBeatAvg = beatAvg ;
+            Serial.printf("IR:%u - bpm:%.2f avg:%d\n", irValue, beatsPerMinute, beatAvg);
+            snprintf(buffer, sizeof(buffer), "BPM:%.2f", beatAvg);
+            lv_label_set_text(bpm, buffer);
+            lv_obj_align(bpm, NULL, LV_ALIGN_CENTER, 0, y);
+
+            snprintf(buffer, sizeof(buffer), "AVG BPM:%d", beatAvg);
+            lv_label_set_text(avg, buffer);
+            lv_obj_align(avg, bpm, LV_ALIGN_OUT_BOTTOM_MID, 0, 0);
+        // }
     }
 
     if (millis() - startMillis > 5) {
@@ -206,24 +211,24 @@ void loop()
 
 void heart_anim_start()
 {
-    static lv_anim_t a;
-    a.var = heart;
-    a.start = lv_obj_get_y(heart);
-    a.end = lv_obj_get_y(heart) - 10;
-    a.fp = (lv_anim_fp_t)lv_obj_set_y;
-    a.path = lv_anim_path_linear;
-    a.end_cb = NULL;
-    a.act_time = -1000;                         /*Negative number to set a delay*/
-    a.time = 400;                               /*Animate in 400 ms*/
-    a.playback = 1;                             /*Make the animation backward too when it's ready*/
-    a.playback_pause = 0;                       /*Wait before playback*/
-    a.repeat = 1;                               /*Repeat the animation*/
-    a.repeat_pause = 100;                       /*Wait before repeat*/
-    lv_anim_create(&a);
+    // static lv_anim_t a;
+    // a.var = heart;
+    // a.start = lv_obj_get_y(heart);
+    // a.end = lv_obj_get_y(heart) - 10;
+    // a.fp = (lv_anim_fp_t)lv_obj_set_y;
+    // a.path = lv_anim_path_linear;
+    // a.end_cb = NULL;
+    // a.act_time = -1000;                         /*Negative number to set a delay*/
+    // a.time = 400;                               /*Animate in 400 ms*/
+    // a.playback = 1;                             /*Make the animation backward too when it's ready*/
+    // a.playback_pause = 0;                       /*Wait before playback*/
+    // a.repeat = 1;                               /*Repeat the animation*/
+    // a.repeat_pause = 100;                       /*Wait before repeat*/
+    // lv_anim_create(&a);
 }
 
 void heart_anim_stop()
 {
-    lv_anim_del(heart, NULL);
+    // lv_anim_del(heart, NULL);
 }
 
