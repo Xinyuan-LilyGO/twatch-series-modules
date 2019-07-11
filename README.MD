@@ -33,3 +33,12 @@ TTGO T-Watch Series expansion module
 - [SparkFun_MAX3010x_Sensor_Library](https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library)
 - [SIM800_Library](https://github.com/lewisxhe/SIM800_Library)
 - [WS2812FX](https://github.com/kitesurfer1404/WS2812FX)
+
+##  Module datasheet
+
+- [DHT11](https://www.mouser.com/ds/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)
+- [Pir AS312](https://forum.mysensors.org/assets/uploads/files/1494013712469-pir-as312.pdf)
+- [Photoresistance](https://github.com/Xinyuan-LilyGO/twatch-series-modules/blob/master/images/C242259_6F097B0D9CA6F711B2C508F05DAFF16F.pdf)
+- [WS2812](https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf)
+
+
