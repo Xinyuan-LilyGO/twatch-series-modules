@@ -14,6 +14,7 @@ TTGO T-Watch Series expansion module
 - **twatch_sim800** : Simple sim800 call phone example
 - **twatch_ws2812** : Simple RGB led example
 - **twatch_s7xg** : Simple lora pingpong test and gps examples
+- **twatch_color** : Simple color detected example
 
 
 
@@ -33,6 +34,7 @@ TTGO T-Watch Series expansion module
 - [SparkFun_MAX3010x_Sensor_Library](https://github.com/sparkfun/SparkFun_MAX3010x_Sensor_Library)
 - [SIM800_Library](https://github.com/lewisxhe/SIM800_Library)
 - [WS2812FX](https://github.com/kitesurfer1404/WS2812FX)
+- [Adafruit_TCS34725](https://github.com/adafruit/Adafruit_TCS34725)
 
 ##  Module datasheet
 
