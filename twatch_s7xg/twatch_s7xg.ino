@@ -8,6 +8,8 @@
 #include <Ticker.h>
 #include <Button2.h>
 #include <s7xg.h>
+#include <SD.h>
+#include <FS.h>
 
 TFT_eSPI *tft = nullptr;
 FT5206_Class *tp = nullptr;
@@ -17,6 +19,7 @@ Ticker btnTicker;
 AXP20X_Class axp;
 S7XG_Class s7xg;
 Button2 btn(36);
+SPIClass SDSPI(HSPI);
 
 uint32_t state = 0, prev_state = 0;
 bool isInit = false;
@@ -168,6 +171,31 @@ void setup()
     pinMode(TFT_BL, OUTPUT);
     digitalWrite(TFT_BL, 1);
 
+
+    SDSPI.begin(SD_SCLK, SD_MISO, SD_MOSI, SD_CS);
+    if (!SD.begin(SD_CS, SDSPI)) {
+        Serial.println("\nSD Card Mount Failed");
+    } else {
+        uint8_t cardType = SD.cardType();
+        if (cardType == CARD_NONE) {
+            Serial.println("No SD_MMC card attached");
+        }
+        Serial.print("SD_MMC Card Type: ");
+        if (cardType == CARD_MMC) {
+            Serial.println("MMC");
+        } else if (cardType == CARD_SD) {
+            Serial.println("SDSC");
+        } else if (cardType == CARD_SDHC) {
+            Serial.println("SDHC");
+        } else {
+            Serial.println("UNKNOWN");
+        }
+
+        uint64_t cardSize = SD.cardSize() / (1024 * 1024);
+        Serial.printf("SD_MMC Card Size: %lluMB\n", cardSize);
+    }
+
+
     axp.setLDO4Voltage(AXP202_LDO4_1800MV);
     axp.setPowerOutPut(AXP202_LDO4, AXP202_ON);
     Serial1.begin(115200, SERIAL_8N1, UART_RX, UART_TX );
@@ -195,7 +223,7 @@ void setup()
             model = Serial1.readStringUntil('\r');
         }
         Serial.println(model);
-        model.replace("\r","");model.replace("\n","");model.replace(">","");model.replace(" ","");
+        model.replace("\r", ""); model.replace("\n", ""); model.replace(">", ""); model.replace(" ", "");
         if ( model == "S76G" || model == "S78G") {
             break;
         }

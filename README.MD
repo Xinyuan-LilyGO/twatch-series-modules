@@ -15,7 +15,7 @@ TTGO T-Watch Series expansion module
 - **twatch_ws2812** : Simple RGB led example
 - **twatch_s7xg** : Simple lora pingpong test and gps examples
 - **twatch_color** : Simple color detected example
-
+- **twatch_buzzer2** : Simple audio playback
 
 
 ##  Using library files
@@ -35,7 +35,7 @@ TTGO T-Watch Series expansion module
 - [SIM800_Library](https://github.com/lewisxhe/SIM800_Library)
 - [WS2812FX](https://github.com/kitesurfer1404/WS2812FX)
 - [Adafruit_TCS34725](https://github.com/adafruit/Adafruit_TCS34725)
-
+- [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio)
 ##  Module datasheet
 
 - [DHT11](https://www.mouser.com/ds/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)
