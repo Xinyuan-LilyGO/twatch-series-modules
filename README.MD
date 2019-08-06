@@ -16,7 +16,7 @@ TTGO T-Watch Series expansion module
 - **twatch_s7xg** : Simple lora pingpong test and gps examples
 - **twatch_color** : Simple color detected example
 - **twatch_buzzer2** : Simple audio playback
-
+- **twatch_lora** : Simple lora sender and reciver
 
 ##  Using library files
 - [TFT_eSPI](https://github.com/lewisxhe/TFT_eSPI)
@@ -36,6 +36,7 @@ TTGO T-Watch Series expansion module
 - [WS2812FX](https://github.com/kitesurfer1404/WS2812FX)
 - [Adafruit_TCS34725](https://github.com/adafruit/Adafruit_TCS34725)
 - [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio)
+- [arduino-LoRa](https://github.com/sandeepmistry/arduino-LoRa.git)
 ##  Module datasheet
 
 - [DHT11](https://www.mouser.com/ds/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)
