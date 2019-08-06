@@ -17,6 +17,7 @@ TTGO T-Watch Series expansion module
 - **twatch_color** : Simple color detected example
 - **twatch_buzzer2** : Simple audio playback
 - **twatch_lora** : Simple lora sender and reciver
+- **twatch_motor2** : Simple motor board sheild demo
 
 ##  Using library files
 - [TFT_eSPI](https://github.com/lewisxhe/TFT_eSPI)
